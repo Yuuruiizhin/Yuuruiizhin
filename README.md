@@ -1,0 +1,3 @@
+- 👋 Hi, I'm @Yuuruiizhin
+- 👀 I am interested in Learning script development for fiveM, and Web development.
+- 🌱 I am currently learning programming in "institute of science and technology".
