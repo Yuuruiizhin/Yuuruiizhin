@@ -1,0 +1,495 @@
+/* ===== VARIABLES CSS ===== */
+:root {
+    /* Colores principales */
+    --primary-text-color: #bcbcbc;
+    --secondary-text-color: #96989d;
+    --accent-white: #ffffff;
+    --background-dark: #1a1a1a;
+    --discord-dark: #18191c;
+    --discord-border: #2a2c31;
+    --discord-text: #dcddde;
+    --discord-text-light: #b9bbbe;
+    
+    /* Colores de efectos */
+    --web-pattern: rgba(30, 30, 30, 0.1);
+    --overlay-gradient: rgba(188, 188, 188, 0.05);
+    --hover-glow: rgba(188, 188, 188, 0.3);
+    --glass-effect: rgba(188, 188, 188, 0.1);
+    --glass-effect-hover: rgba(188, 188, 188, 0.2);
+    
+    /* Colores de rayos */
+    --lightning-primary: #8a0000;
+    --lightning-secondary: #ff4444;
+    --lightning-bright: #ff0000;
+    
+    /* Colores de estado */
+    --status-online: #23a559;
+    --status-offline: #80848e;
+    
+    /* Tamaños de fuente */
+    --font-title-desktop: 48px;
+    --font-title-tablet: 36px;
+    --font-title-mobile: 28px;
+    --font-subtitle: 18px;
+    --font-subtitle-tablet: 16px;
+    --font-subtitle-mobile: 14px;
+}
+
+/* ===== RESET Y CONFIGURACIÓN BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== ESTILOS DEL BODY Y FONDO ===== */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+    font-family: 'DejaVu Serif', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    cursor: url('../main/cursor.webp'), auto;
+    overflow-x: hidden;
+    background-attachment: fixed;
+
+    /* Telaraña mejorada con múltiples capas */
+    background-image:
+        /* Primera capa de telaraña diagonal */
+        linear-gradient(45deg, var(--web-pattern) 1px, transparent 1px),
+        linear-gradient(45deg, var(--web-pattern) 1px, transparent 1px),
+        linear-gradient(-45deg, var(--web-pattern) 1px, transparent 1px),
+        linear-gradient(-45deg, var(--web-pattern) 1px, transparent 1px),
+        /* Segunda capa más sutil */
+        linear-gradient(30deg, rgba(40, 40, 40, 0.05) 1px, transparent 1px),
+        linear-gradient(-30deg, rgba(40, 40, 40, 0.05) 1px, transparent 1px),
+        /* Imagen de fondo con overlay oscuro */
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../main/background.webp');
+
+    background-size:
+        20px 20px, 20px 20px,
+        20px 20px, 20px 20px,
+        40px 40px, 40px 40px,
+        100% 100%,
+        cover;
+
+    background-position:
+        0 0, 10px 10px,
+        0 10px, 10px 0,
+        0 0, 20px 20px,
+        center center,
+        center center;
+
+    background-repeat:
+        repeat, repeat,
+        repeat, repeat,
+        repeat, repeat,
+        no-repeat,
+        no-repeat;
+
+    /* Animación mejorada con múltiples capas */
+    animation: enhanced-background-pan 25s infinite linear;
+}
+
+/* Overlay adicional para mejorar contraste */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, var(--overlay-gradient) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Animaciones mejoradas */
+@keyframes enhanced-background-pan {
+    0% { 
+        background-position: 0 0, 10px 10px, 0 10px, 10px 0, 0 0, 20px 20px, center center, center center;
+    }
+    50% {
+        background-position: 10px 10px, 20px 20px, 10px 20px, 20px 10px, 20px 20px, 40px 40px, center center, center center;
+    }
+    100% { 
+        background-position: 20px 20px, 30px 30px, 20px 30px, 30px 20px, 40px 40px, 60px 60px, center center, center center;
+    }
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-content {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* ===== LOGO ===== */
+.logo {
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.logo img {
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.logo img:hover {
+    transform: rotate(360deg) scale(1.05);
+    box-shadow: 0 0 30px var(--hover-glow);
+    filter: brightness(1.1) contrast(1.2);
+}
+
+/* ===== TÍTULOS ===== */
+.title {
+    color: var(--primary-text-color);
+    font-size: var(--font-title-desktop);
+    font-family: 'DejaVu Serif', serif;
+    margin: 20px 0 10px 0;
+    font-weight: normal;
+    animation: fadeInUp 1s ease-out 0.2s both;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(188, 188, 188, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.subtitle {
+    color: var(--primary-text-color);
+    font-family: 'DejaVu Serif', serif;
+    font-size: var(--font-subtitle);
+    margin: 10px 0 30px 0;
+    font-style: italic;
+    opacity: 0.8;
+    animation: fadeInUp 1s ease-out 0.4s both;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* ===== ICONOS DE REDES SOCIALES ===== */
+.icons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.icons a {
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    background: var(--glass-effect);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.icons a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.icons a:hover::before {
+    transform: translateX(100%);
+}
+
+.icons a:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: var(--glass-effect-hover);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(188, 188, 188, 0.2);
+}
+
+.icons img {
+    display: block;
+    filter: 
+        brightness(0.8) 
+        contrast(1.1)
+        grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.icons a:hover img {
+    filter: 
+        brightness(1.2) 
+        contrast(1.3)
+        grayscale(0%);
+}
+
+/* ===== TARJETA DE PRESENCIA DISCORD ===== */
+.presence-card {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--discord-dark) 0%, #16171a 100%);
+    border: 1px solid var(--discord-border);
+    border-radius: 12px;
+    padding: 12px 15px;
+    max-width: 400px;
+    width: 90%;
+    margin: 40px auto 0;
+    font-family: 'DejaVu Serif', serif;
+    animation: fadeInUp 1s ease-out 0.8s both;
+    position: relative;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.presence-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.presence-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid var(--discord-border);
+    transition: all 0.3s ease;
+}
+
+.presence-card:hover .presence-avatar {
+    border-color: var(--primary-text-color);
+    transform: scale(1.05);
+}
+
+.presence-info {
+    flex-grow: 1;
+    text-align: left;
+    color: var(--discord-text);
+    line-height: 1.4;
+    overflow: hidden;
+}
+
+.presence-user {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-icon {
+    width: 10px;
+    height: 10px;
+    background-color: var(--status-online);
+    border-radius: 50%;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 4px currentColor;
+}
+
+.presence-text,
+.presence-details {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.presence-details {
+    font-size: 13px;
+    color: var(--discord-text-light);
+}
+
+.presence-app-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.presence-card:hover .presence-app-icon {
+    transform: scale(1.1);
+}
+
+/* Estado offline */
+.presence-card.offline {
+    filter: grayscale(60%);
+    opacity: 0.85;
+}
+
+.presence-card.offline .presence-info {
+    color: var(--secondary-text-color);
+}
+
+.presence-card.offline .status-icon {
+    background-color: var(--status-offline);
+}
+
+/* ===== EFECTOS DE RAYOS ===== */
+#main_title_wrapper {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.lightning-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.lightning-bolt {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .title {
+        font-size: var(--font-title-tablet);
+    }
+    
+    .subtitle {
+        font-size: var(--font-subtitle-tablet);
+    }
+    
+    .icons {
+        gap: 20px;
+    }
+    
+    .logo img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .icons img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .presence-card {
+        padding: 10px;
+    }
+    
+    .presence-avatar {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .presence-app-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: var(--font-title-mobile);
+    }
+    
+    .subtitle {
+        font-size: var(--font-subtitle-mobile);
+    }
+    
+    .icons {
+        gap: 15px;
+    }
+    
+    .logo img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .icons img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .presence-text, .presence-details {
+        font-size: 14px;
+    }
+    
+    .presence-details {
+        font-size: 12px;
+    }
+}
+
+/* ===== ESTADOS DE FOCUS PARA ACCESIBILIDAD ===== */
+.icons a:focus {
+    outline: 2px solid var(--primary-text-color);
+    outline-offset: 4px;
+}
+
+.icons a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ===== MEJORAS DE CONTRASTE ===== */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-text-color: #ffffff;
+        --discord-text: #ffffff;
+        --web-pattern: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* ===== REDUCIR MOVIMIENTO PARA USUARIOS SENSIBLES ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    body {
+        animation: none;
+    }
+}
