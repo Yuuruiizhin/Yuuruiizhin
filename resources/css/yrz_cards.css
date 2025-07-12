@@ -1,0 +1,272 @@
+/*Definicion de contenedor para la tarjeta
+    Ayuda a mantener un diseño flexible y centrado de las tarjetas (Agrupadas)
+
+
+    ----------------------   Yuuruii Css Library - Tarjetas class ----------------------
+    Contenedor / Contenedor de tarjetas
+    CardYRZ / Tarjeta Gray n blur
+    CleanCardYRZ / Variable limpia sin blur
+    FormCardYRZ / Variable para formularios pequeños (NOT BLUR)
+    FlipCardYRZ / Tarjeta con efecto flip
+    RGB-Card-YRZ / Tarjeta con borde RGB
+*/
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*Tarjetas Gray n blur*/
+.CardYRZ {
+  background-color: rgb(50, 50, 50);
+  border: 1px solid #ddd;
+  border: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.651);
+  margin: 15px;
+  padding: 10px;
+  width: calc(33.33% - 40px);
+  border-radius: 15px;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0.6;
+  filter: blur(2px);
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+.CardYRZ:hover {
+  opacity: 1;
+  filter: none;
+  background-color: rgb(50, 50, 50);
+  border: 1px solid #ddd;
+  border: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin: 15px;
+  padding: 10px;
+  width: calc(33.33% - 40px);
+  border-radius: 15px;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.CardYRZ img {
+    border: 50%;
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.CardYRZ h2 {
+    font: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.CardYRZ p {
+    font: 16px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/*Variable limpia sin blur*/
+
+.CleanCardYRZ {
+    background-color: rgb(50, 50, 50);
+    border: 1px solid #ddd;
+    border: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.651);
+    margin: 15px;
+    padding: 10px;
+    width: calc(33.33% - 40px);
+    border-radius: 15px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.CleanCardYRZ:hover {
+    background-color: rgb(50, 50, 50);
+    border: 1px solid #ddd;
+    border: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 15px;
+    padding: 10px;
+    width: calc(33.33% - 40px);
+    border-radius: 15px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.CleanCardYRZ img {
+    border: 50%;
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.CleanCardYRZ h2 {
+    font: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.CleanCardYRZ p {
+    font: 16px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/*Variable para formularios pequeños (NOT BLUR)*/
+
+.FormCardYRZ {
+    background-color: rgb(50, 50, 50);
+    border: 1px solid #ddd;
+    border: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 20px;
+    padding: 20px;
+    width: calc(33.33% - 40px);
+    border-radius: 15px;
+}
+
+/*FlipCardYRZ*/
+
+.flip-card {
+  background-color: transparent;
+  width: 190px;
+  height: 254px;
+  perspective: 1000px;
+  font-family: sans-serif;
+  padding: 10px;
+}
+
+.FLIPCTitle {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid coral;
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+    background: 
+        linear-gradient(120deg,
+            bisque 60%,
+            rgb(255, 231, 222) 88%,
+            rgb(255, 211, 195) 40%,
+            rgba(255, 127, 80, 0.603) 48%);
+    color: coral;
+}
+
+.flip-card-back {
+    background:
+        linear-gradient(120deg,
+            rgb(255, 174, 145) 30%,
+            coral 88%,
+            bisque 40%,
+            rgb(255, 185, 160) 78%);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* RGB Border Card*/ 
+
+.RGB-Card-YRZ {
+ --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+ width: 190px;
+ height: 254px;
+ padding: 5px;
+ margin-right: 20px;
+ margin-left: 20px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ border-radius: 1rem;
+ overflow: visible;
+ background: #f7ba2b;
+ background: var(--background);
+ position: relative;
+ z-index: 1;
+}
+
+.RGB-Card-YRZ::after {
+ position: absolute;
+ content: "";
+ top: 30px;
+ left: 0;
+ right: 0;
+ z-index: -1;
+ height: 100%;
+ width: 100%;
+ transform: scale(0.8);
+ filter: blur(25px);
+ background: #f7ba2b;
+ background: var(--background);
+ transition: opacity 0.5s;
+ opacity: 1;
+}
+
+.RGB-Card-YRZ-info {
+ --color: #181818;
+ background: var(--color);
+ color: var(--color);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 100%;
+ overflow: visible;
+ border-radius: .7rem;
+ transition: color 1s;
+}
+
+.RGB-Card-YRZ .RGB-Card-YRZ-title {
+ font-weight: bold;
+ letter-spacing: .1em;
+}
+
+/*Hover*/
+.RGB-Card-YRZ:hover::after {
+ opacity: 0;
+ transition: opacity 0.5s;
+}
+
+.RGB-Card-YRZ:hover .RGB-Card-YRZ-info {
+ color: #f7ba2b;
+ transition: color 1s;
+}

@@ -1,0 +1,302 @@
+/* ===== VARIABLES CSS ===== */
+:root {
+    /* Colores principales */
+    --primary-text-color: #bcbcbc;
+    --secondary-text-color: #96989d;
+    --accent-white: #ffffff;
+    --background-dark: #1a1a1a;
+    --discord-dark: #18191c;
+    --discord-border: #2a2c31;
+    --discord-text: #dcddde;
+    --discord-text-light: #b9bbbe;
+    
+    /* Colores de efectos */
+    --web-pattern: rgba(30, 30, 30, 0.1);
+    --overlay-gradient: rgba(188, 188, 188, 0.05);
+    --hover-glow: rgba(188, 188, 188, 0.3);
+    --glass-effect: rgba(188, 188, 188, 0.1);
+    --glass-effect-hover: rgba(188, 188, 188, 0.2);
+    
+    /* Colores de rayos */
+    --lightning-primary: #8a0000;
+    --lightning-secondary: #ff4444;
+    --lightning-bright: #ff0000;
+    
+    /* Colores de estado */
+    --status-online: #23a559;
+    --status-offline: #80848e;
+    
+    /* Tamaños de fuente */
+    --font-title-desktop: 48px;
+    --font-title-tablet: 36px;
+    --font-title-mobile: 28px;
+    --font-subtitle: 18px;
+    --font-subtitle-tablet: 16px;
+    --font-subtitle-mobile: 14px;
+}
+
+/* ===== RESET Y CONFIGURACIÓN BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== ESTILOS DEL BODY Y FONDO ===== */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+    font-family: 'DejaVu Serif', serif;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-attachment: fixed;
+
+    /* Telaraña mejorada con múltiples capas */
+    background-image:
+        /* Primera capa de telaraña diagonal */
+        linear-gradient(45deg, var(--web-pattern) 1px, transparent 1px),
+        linear-gradient(45deg, var(--web-pattern) 1px, transparent 1px),
+        linear-gradient(-45deg, var(--web-pattern) 1px, transparent 1px),
+        linear-gradient(-45deg, var(--web-pattern) 1px, transparent 1px),
+        /* Segunda capa más sutil */
+        linear-gradient(30deg, rgba(40, 40, 40, 0.05) 1px, transparent 1px),
+        linear-gradient(-30deg, rgba(40, 40, 40, 0.05) 1px, transparent 1px),
+        /* Imagen de fondo con overlay oscuro */
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../main/background.webp');
+
+    background-size:
+        20px 20px, 20px 20px,
+        20px 20px, 20px 20px,
+        40px 40px, 40px 40px,
+        100% 100%,
+        cover;
+
+    background-position:
+        0 0, 10px 10px,
+        0 10px, 10px 0,
+        0 0, 20px 20px,
+        center center,
+        center center;
+
+    background-repeat:
+        repeat, repeat,
+        repeat, repeat,
+        repeat, repeat,
+        no-repeat,
+        no-repeat;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    align-content: left;
+    align-items: left;
+    justify-content: space-between;
+    background-color: var(--background-dark);
+    position: relative;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+main {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor {
+    border-radius: 30px;
+    width: 60%;
+    padding: 0 20px;
+    background-color: rgba(58, 58, 58, 0.5);
+    color: var(--primary-text-color);
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.contenedor p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+    display: block;
+    width: 100%;
+}
+
+.contenedor h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: var(--primary-text-color);
+    text-align: center;
+    display: block;
+    width: 100%;
+    clear: both;
+    /* Si usas <br> y aún se posiciona al lado, puede que haya elementos flotando o inline. */
+}
+
+.contenedor h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--primary-text-color);
+    text-align: center;
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+.contenedor span {
+    font-weight: bold;
+    color: var(--primary-text-color);
+}
+
+footer {
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.footer-content {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    color: var(--primary-text-color);
+    position: relative;
+    bottom: 0;
+
+}
+
+
+
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .title {
+        font-size: var(--font-title-tablet);
+    }
+    
+    .subtitle {
+        font-size: var(--font-subtitle-tablet);
+    }
+    
+    .icons {
+        gap: 20px;
+    }
+    
+    .logo img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .icons img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .presence-card {
+        padding: 10px;
+    }
+    
+    .presence-avatar {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .presence-app-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: var(--font-title-mobile);
+    }
+    
+    .subtitle {
+        font-size: var(--font-subtitle-mobile);
+    }
+    
+    .icons {
+        gap: 15px;
+    }
+    
+    .logo img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .icons img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .presence-text, .presence-details {
+        font-size: 14px;
+    }
+    
+    .presence-details {
+        font-size: 12px;
+    }
+}
+
+/* ===== ESTADOS DE FOCUS PARA ACCESIBILIDAD ===== */
+.icons a:focus {
+    outline: 2px solid var(--primary-text-color);
+    outline-offset: 4px;
+}
+
+.icons a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ===== MEJORAS DE CONTRASTE ===== */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-text-color: #ffffff;
+        --discord-text: #ffffff;
+        --web-pattern: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* ===== REDUCIR MOVIMIENTO PARA USUARIOS SENSIBLES ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    body {
+        animation: none;
+    }
+}
